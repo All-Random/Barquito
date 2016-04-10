@@ -9,7 +9,7 @@ public class WaterTap : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("SpawnWater", 0, 0.01f);
+		InvokeRepeating ("SpawnWater", 5, 0.01f);
 	}
 
 	public void SpawnWater() {
