@@ -174,9 +174,6 @@ public class Water : MonoBehaviour {
 
         }
 
-        
-        
-        
     }
 
     //Same as the code from in the meshes before, set the new mesh positions
@@ -243,10 +240,24 @@ public class Water : MonoBehaviour {
         UpdateMeshes();
 	}
 
-    void OnTriggerStay2D(Collider2D Hit)
+    void OnTriggerStay2D(Collider2D hit)
     {
         //Bonus exercise. Fill in your code here for making things float in your water.
         //You might want to even include a buoyancy constant unique to each object!
+		//hit.gameObject.GetComponent<Rigidbody2D> ().AddRelativeForce (new Vector2(0f,(hit.gameObject.GetComponent<Rigidbody2D>().velocity.y*-3)+2.5f));
+		Rigidbody2D body = hit.GetComponent<Rigidbody2D>();
+		//body.AddForceAtPosition(new Vector2(0,body.velocity.y*-10f + body.GetRelativePoint(new Vector2(0f,0f)).x * -10f + 2f), new Vector2(0,0));
+		Transform[] buoyancy = hit.transform.GetComponentsInChildren<Transform>();
+		Vector2 center = new Vector2 (0, 0);
+		int buoyUsed = 0;
+		for (int i = buoyancy.Length -1; i >= 0; i--) {
+			if(buoyancy[i].position.y < 0) {
+				center += (Vector2)buoyancy [i].position;
+				buoyUsed++;
+			}
+		}
+		center /= buoyUsed;
+		body.AddForceAtPosition(new Vector2(0,9*buoyUsed), center);
     }
 
 
