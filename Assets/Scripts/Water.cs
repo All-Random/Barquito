@@ -242,8 +242,6 @@ public class Water : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D hit)
     {
-        //Bonus exercise. Fill in your code here for making things float in your water.
-        //You might want to even include a buoyancy constant unique to each object!
 		//hit.gameObject.GetComponent<Rigidbody2D> ().AddRelativeForce (new Vector2(0f,(hit.gameObject.GetComponent<Rigidbody2D>().velocity.y*-3)+2.5f));
 		Rigidbody2D body = hit.GetComponent<Rigidbody2D>();
 		//body.AddForceAtPosition(new Vector2(0,body.velocity.y*-10f + body.GetRelativePoint(new Vector2(0f,0f)).x * -10f + 2f), new Vector2(0,0));
